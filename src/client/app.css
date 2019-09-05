@@ -52,6 +52,7 @@ p {
 }
 
 .card-heading {
+  position: relative;
   margin-left: 10px;
 
   text-decoration: underline #44DFD6 solid ;

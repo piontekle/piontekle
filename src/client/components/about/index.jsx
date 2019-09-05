@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './about.css';
 
 class About extends Component {
-  state = { showAbout: null }
+  state = { showAbout: null };
 
   showClick(about) {
     this.setState({ showAbout: about });
