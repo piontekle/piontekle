@@ -1,8 +1,64 @@
-h1 {
-  color: green;
+html, body {
+  margin: 0px;
+  height: 100%;
+
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
 }
 
-body {
-  text-align: center;
-  margin: auto;
+/* general text */
+p {
+  margin: 10px;
+}
+
+.link {
+  margin-left: 20px;
+  text-decoration: none;
+
+  font-weight: bold;
+}
+
+.page-heading {
+  width: auto;
+  margin-left: 125.5px;
+  margin-top: 20px;
+  margin-right: 25px;
+
+  border-bottom: 5px solid #44DFD6;
+}
+
+/*general body + card styling*/
+
+.app-container {
+  min-height: 100vh;
+  display: block;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.app-body {
+  position: relative;
+}
+
+.card {
+  width: auto;
+  height: 200px;
+  margin-left: 125.5px;
+  margin-top: 20px;
+  margin-right: 25px;
+
+  border: 5px solid #44DFD6;
+  border-radius: 15px;
+}
+
+.card-heading {
+  margin-left: 10px;
+
+  text-decoration: underline #44DFD6 solid ;
+}
+
+.card-content {
+  position: relative;
+  top: 25%;
+  transform: translateY(-50%);
 }

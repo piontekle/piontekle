@@ -1,0 +1,12 @@
+#preview-card-section {
+  display: flex;
+  width: auto;
+  margin-left: 125.5px;
+}
+
+.preview-card {
+  float: left;
+  margin-left: 0px;
+  width: 33%;
+  height: 300px;
+}

@@ -1,0 +1,8 @@
+.about-card {
+  position: relative;
+  height: auto;
+}
+
+.hidden {
+  display: none;
+}
