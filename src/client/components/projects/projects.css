@@ -1,6 +1,5 @@
 .project-card {
   display: flex;
-  overflow-x: hidden;
   height: 225px;
 }
 
@@ -84,6 +83,7 @@
 .project-card-content {
   position: relative;
   margin-top: 10px;
+  overflow-y: scroll;
 }
 
 .project-link {
