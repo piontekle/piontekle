@@ -7,7 +7,7 @@ class Contact extends Component {
     super()
 
     this.state = {
-      url: "https://piontekle.herokuapp.com/",
+      url: "https://piontekle.herokuapp.com",
       name: "",
       email: "",
       subject: "Saw your portfolio - let's get in touch!",
