@@ -4,12 +4,12 @@
   "description": "Portfolio using React, Node.js, Express and Webpack.",
   "main": "src/server/server.js",
   "scripts": {
-    "heroku-prebuild": "npm install --dev",
     "build": "webpack --mode production",
     "start": "npm run build && node src/server/server.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon src/server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-prebuild": "npm install --dev",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
   "author": "Lauren Piontek",
