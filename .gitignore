@@ -2,5 +2,5 @@
 node_modules
 dist
 *.log
-package-log.json
+package-lock.json
 .env
