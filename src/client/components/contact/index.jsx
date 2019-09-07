@@ -41,7 +41,7 @@ class Contact extends Component {
   }
 
   handleSubmit(e) {
-    console.log("url: " + this.state.url)
+    console.log("url: " + process.env.REACT_APP_PROD_URL)
     e.preventDefault();
     const { url, name, email, subject, message } = this.state;
 
