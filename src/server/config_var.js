@@ -1,4 +1,4 @@
-const name = process.env.USER
+const name = process.env.NAME
 const me = process.env.ME
 const host = "gmail.com"
 

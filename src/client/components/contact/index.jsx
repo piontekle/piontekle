@@ -53,6 +53,7 @@ class Contact extends Component {
     .then((res) => {
       if(res.data.msg === "success") {
         alert("Message sent! I'll get back to you soon.");
+        window.location = "/";
       } else if (res.data.msg === 'fail') {
         alert("Message failed to send.");
       }

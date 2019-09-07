@@ -24,7 +24,6 @@ transporter.verify((error, success) => {
 
 //send mail code
 app.post('/sendMail', (req, res, next) => {
-  console.log("name: " + req.body.name)
   const email_content = {
     name: req.body.name,
     email: req.body.email,

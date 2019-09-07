@@ -12,7 +12,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 //CORS
 if(process.env.NODE_ENV === 'production') {
-  app.use(cors());
+  const whitelist = ['https://www.piontekle.com/'];
+  const corsOptions = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    }
+  }
+  app.use(cors(corsOptions));
 } else {
   app.use(cors());
 }
