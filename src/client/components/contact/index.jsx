@@ -7,18 +7,18 @@ class Contact extends Component {
     super()
 
     this.state = {
-      url: "https://piontekle.herokuapp.com",
+      url: null,
       name: "",
       email: "",
       subject: "Saw your portfolio - let's get in touch!",
       message: ""
     }
 
-/*
-    this.getURL = this.getURL.bind(this); */
+
+    this.getURL = this.getURL.bind(this);
   }
 
-/*  componentDidMount() {
+  componentDidMount() {
     this.getURL();
   }
 
@@ -30,18 +30,18 @@ class Contact extends Component {
     if (host === "localhost") {
       url = protocol + "//" + host + ":8080"
     } else {
-      url = protocol + "//" + host
+      url = protocol + "//" + process.env.PROD_URL
     }
 
     this.setState({ url: url });
   }
-*/
 
   handleChange = value => e => {
     this.setState({ [value]: e.target.value })
   }
 
   handleSubmit(e) {
+    console.log("url: " + this.state.url)
     e.preventDefault();
     const { url, name, email, subject, message } = this.state;
 
