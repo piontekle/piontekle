@@ -30,7 +30,7 @@ class Contact extends Component {
     if (host === "localhost") {
       url = protocol + "//" + host + ":8080"
     } else {
-      url = protocol + "//" + process.env.REACT_APP_PROD_URL
+      url = protocol + "//" + piontekle.herokuapp.com
     }
 
     this.setState({ url: url });
