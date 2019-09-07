@@ -1,6 +1,8 @@
 html, body {
   margin: 0px;
   height: 100%;
+  min-width: 810px;
+  overflow: auto;
 
   font-family: 'Lato', sans-serif;
   font-style: normal;
@@ -27,6 +29,16 @@ p {
   border-bottom: 5px solid #44DFD6;
 }
 
+button {
+  margin: 5px;
+
+  font-weight: bold;
+
+  background: none;
+  border: 1px solid #44DFD6;
+  border-radius: 15px;
+}
+
 /*general body + card styling*/
 
 .app-container {
@@ -46,6 +58,7 @@ p {
   margin-left: 125.5px;
   margin-top: 20px;
   margin-right: 25px;
+  overflow: scroll;
 
   border: 5px solid #44DFD6;
   border-radius: 15px;

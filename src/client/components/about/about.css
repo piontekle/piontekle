@@ -6,3 +6,25 @@
 .hidden {
   display: none;
 }
+
+.about-link {
+  margin: 0;
+  color: #44DFD6;
+}
+
+.about-pic {
+  float: left;
+  margin-right: 5px;
+  max-height: 160px;
+  border-radius: 15px;
+}
+
+.ulti-pic {
+  float: left;
+  margin-right: 5px;
+  border-radius: 15px;
+}
+
+.personal-p {
+  display: inline-block;
+}

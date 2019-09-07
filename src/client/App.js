@@ -7,16 +7,9 @@ import Home from './components/home';
 import About from './components/about';
 import Projects from './components/projects';
 import Skills from './components/skills';
+import Contact from './components/contact';
 
 export default class App extends Component {
-  state = { username: null };
-
-  componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
-  }
-
   render() {
     return (
       <BrowserRouter>
@@ -28,6 +21,7 @@ export default class App extends Component {
             <Route path="/about" component={About} />
             <Route path="/projects" component={Projects} />
             <Route path="/skills" component={Skills} />
+            <Route path="/contact" component={Contact} />
           </div>
           <Footer />
         </div>

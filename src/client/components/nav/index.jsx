@@ -17,12 +17,12 @@ const Header = () => (
   </header>
 )
 
-
 const Sidebar = () => (
   <section id="sidebar">
-    <a className="link" href="https://drive.google.com/file/d/1ZoS0h7HZtxJsc4K-FB_AH1xBXwVr113T/view?usp=sharing"><img className="icon" src="https://live.staticflickr.com/65535/48683705156_61bc0bba51_z.jpg"  alt="email-icon"/></a>
-    <a className="link" href="https://github.com/piontekle" target="_blank"><img className="icon" src="https://live.staticflickr.com/65535/48683705136_fc7a122ab2_z.jpg"  alt="git-icon"/></a>
-    <a className="link" href="https://linkedin.com/in/piontekle" target="_blank"><img className="icon" src="https://live.staticflickr.com/65535/48683705116_7549316d28_z.jpg"  alt="linkedin-icon"/></a>
+    <Link className="link" to="/contact" title="Email Me"><img className="icon" src="https://live.staticflickr.com/65535/48683705156_61bc0bba51_z.jpg" alt="email-icon"/></Link>
+    <a className="link" href="https://linkedin.com/in/piontekle" title="Connect on LinkedIn" target="_blank"><img className="icon" src="https://live.staticflickr.com/65535/48683705116_7549316d28_z.jpg"  alt="linkedin-icon"/></a>
+    <a className="link" href="https://drive.google.com/file/d/1ZoS0h7HZtxJsc4K-FB_AH1xBXwVr113T/view?usp=sharing" title="My Resume" target="_blank"><img className="icon" src="https://live.staticflickr.com/65535/48689825136_95a132994e_m.jpg" alt="resume-icon"/></a>
+    <a className="link" href="https://github.com/piontekle" title="My GitHub" target="_blank"><img className="icon" src="https://live.staticflickr.com/65535/48683705136_fc7a122ab2_z.jpg"  alt="git-icon"/></a>
   </section>
 )
 

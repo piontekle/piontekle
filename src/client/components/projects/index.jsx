@@ -7,11 +7,11 @@ const Projects = () => (
       <h2>Projects</h2>
     </section>
     <section className="card project-card">
-      <div className= "card preview-card-img">
+      <div className= "card project-preview-card-img">
         <div className="overlay-content">
           <a href="https://piontekle-fitfeel.herokuapp.com" target="_blank">
             <div className="project-overlay"></div>
-            <img className="preview-img" src="https://live.staticflickr.com/65535/48684120682_7651c9b363_b.jpg" alt="fitfeel-preview" />
+            <img className="project-preview-img" src="https://live.staticflickr.com/65535/48684120682_7651c9b363_b.jpg" alt="fitfeel-preview" />
             <div className="overlay-details"><h3>Go To App</h3></div>
           </a>
         </div>
@@ -27,11 +27,11 @@ const Projects = () => (
       </div>
     </section>
     <section className="card project-card">
-      <div className= "card preview-card-img">
+      <div className= "card project-preview-card-img">
         <div className="overlay-content">
           <a href="https://lists-and-friends.firebaseapp.com/" target="_blank">
             <div className="project-overlay"></div>
-            <img className="preview-img" src="https://live.staticflickr.com/65535/48685444956_89aa787548_z.jpg" alt="lists-preview" />
+            <img className="project-preview-img" src="https://live.staticflickr.com/65535/48685444956_89aa787548_z.jpg" alt="lists-preview" />
             <div className="overlay-details"><h3>Go To App</h3></div>
           </a>
         </div>
@@ -47,11 +47,11 @@ const Projects = () => (
       </div>
     </section>
     <section className="card project-card">
-      <div className= "card preview-card-img">
+      <div className= "card project-preview-card-img">
         <div className="overlay-content">
           <a href="http://piontekle-bloccipedia.herokuapp.com/" target="_blank">
             <div className="project-overlay"></div>
-            <img className="preview-img" src="https://live.staticflickr.com/65535/48685680322_3ce63e3180_z.jpg" alt="bloccipedia-preview" />
+            <img className="project-preview-img" src="https://live.staticflickr.com/65535/48685680322_3ce63e3180_z.jpg" alt="bloccipedia-preview" />
             <div className="overlay-details"><h3>Go To App</h3></div>
           </a>
         </div>
@@ -62,7 +62,7 @@ const Projects = () => (
       <div className="project-card-content">
           <p><a className="link project-link" href="https://github.com/piontekle/bloccipedia" target="_blank">Repo</a></p>
           <p><b>Quick Hits:</b> Wiki replica with CRUD functionality for user-made wikis. Paid account option with Stripe integration to make wikis private.</p>
-          <p><b>Upcoming features:</b>Better UI, option to add images</p>
+          <p><b>Upcoming features:</b> Better UI, option to add images</p>
           <p><b>Tech:</b> Node | Express | PostgreSQL | Stripe | Jasmine | ESX | CSS | MDL | Heroku</p>
       </div>
     </section>

@@ -1,12 +1,47 @@
-#preview-card-section {
+.home-card {
+  position: relative;
+  min-width: 575px;
+  height: auto;
+}
+
+.summary {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.summary-p {
+  font-size: 18px;
+}
+
+.preview-card-section {
   display: flex;
   width: auto;
+  min-width: 580px;
   margin-left: 125.5px;
 }
 
 .preview-card {
+  position: relative;
   float: left;
   margin-left: 0px;
   width: 33%;
-  height: 300px;
+  height: 250px;
+  overflow-y: scroll;
+}
+
+.preview-img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 125px;
+
+  border-radius: 15px;
+}
+
+.preview-link {
+  position: absolute;
+  margin: 0 5px 5px 0;
+  right: 0;
+  bottom: 0;
+
+  color: #44DFD6;
 }
