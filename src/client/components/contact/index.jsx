@@ -7,13 +7,14 @@ class Contact extends Component {
     super()
 
     this.state = {
-      url: null,
+      url: "https://piontekle.herokuapp.com/",
       name: "",
       email: "",
       subject: "Saw your portfolio - let's get in touch!",
       message: ""
     }
 
+/*
     this.getURL = this.getURL.bind(this);
   }
 
@@ -38,6 +39,7 @@ class Contact extends Component {
   handleChange = value => e => {
     this.setState({ [value]: e.target.value })
   }
+*/
 
   handleSubmit(e) {
     e.preventDefault();
