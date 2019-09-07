@@ -15,6 +15,8 @@ const transport = {
 var transporter = nodemailer.createTransport(transport);
 
 transporter.verify((error, success) => {
+  console.log("*****USER IS****")
+  console.log(creds.USER)
   if (error) {
     console.log(error);
   } else {
