@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 //CORS
 if(process.env.NODE_ENV === 'production') {
-  const whitelist = ['https://www.piontekle.com/'];
+  const whitelist = ['https://www.piontekle.com/', 'http://www.piontekle.com/'];
   const corsOptions = {
     origin: function (origin, callback) {
       if (whitelist.indexOf(origin) !== -1) {

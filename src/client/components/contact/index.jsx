@@ -40,7 +40,6 @@ class Contact extends Component {
   }
 
   handleSubmit(e) {
-    console.log("submit pressed")
     e.preventDefault();
     const { url, name, email, subject, message } = this.state;
 

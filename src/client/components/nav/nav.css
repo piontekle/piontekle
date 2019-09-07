@@ -2,7 +2,7 @@
 header {
   position: relative;
   width: auto;
-  height: 285px;
+  height: 223px;
   left: 0px;
   top: 0px;
 
@@ -12,8 +12,8 @@ header {
 
 #pro-pic-rect {
   position: absolute;
-  width: 221px;
-  height: 277px;
+  width: 165px;
+  height: 215px;
   left: 15px;
   top: 8px;
 
@@ -25,8 +25,8 @@ header {
 }
 
 #pro-pic {
-  width: 179px;
-  height: 240px;
+  width: 150px;
+  height: 200px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
@@ -38,8 +38,8 @@ header {
   position: absolute;
   width: 561.48px;
   height: 44.3px;
-  left: 250px;
-  top: 220px;
+  left: 183px;
+  top: 158px;
 }
 
 .header-link {
@@ -56,6 +56,10 @@ header {
 .icon {
   width: 56px;
   height: 54px;
+}
+
+.twitter {
+  height: 45px;
 }
 
 footer {
