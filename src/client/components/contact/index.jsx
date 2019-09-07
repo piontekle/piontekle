@@ -15,10 +15,10 @@ class Contact extends Component {
     }
 
 /*
-    this.getURL = this.getURL.bind(this);
+    this.getURL = this.getURL.bind(this); */
   }
 
-  componentDidMount() {
+/*  componentDidMount() {
     this.getURL();
   }
 
