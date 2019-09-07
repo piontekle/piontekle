@@ -35,11 +35,11 @@ class Contact extends Component {
 
     this.setState({ url: url });
   }
+*/
 
   handleChange = value => e => {
     this.setState({ [value]: e.target.value })
   }
-*/
 
   handleSubmit(e) {
     e.preventDefault();
