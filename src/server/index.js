@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 
 const routes = require('./routes.js');
-console.log(__dirname);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,7 +26,7 @@ app.use(function (req, res, next) {
 app.use(express.static('dist'));
 app.use('/', routes);
 app.use(express.static(path.join(__dirname, '..', '..', 'dist')));
-app.get('*', function(req, res) {
+app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '..', '..', '/dist/index.html'));
 });
 
