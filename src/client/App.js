@@ -10,6 +10,12 @@ import Skills from './components/skills';
 import Contact from './components/contact';
 
 export default class App extends Component {
+  constructor() {
+    super();
+
+    this.connectToServer = this.connectToServer.bind(this);
+  }
+  
   connectToServer() {
     fetch('/');
   }
