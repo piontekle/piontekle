@@ -4,7 +4,7 @@
   "description": "Portfolio using React, Node.js, Express and Webpack.",
   "main": "src/server/server.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && echo '/* /index.html  200' | cat >build/_redirects",
     "start": "npm run build && node src/server/server.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon src/server/server.js",
