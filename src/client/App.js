@@ -10,6 +10,14 @@ import Skills from './components/skills';
 import Contact from './components/contact';
 
 export default class App extends Component {
+  connectToServer() {
+    fetch('/');
+  }
+
+  componentDidMount() {
+    this.connectToServer();
+  }
+
   render() {
     return (
       <BrowserRouter>
