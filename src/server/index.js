@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 //CORS
-var whitelist = ['http://localhost:3000', 'http://piontekle.com', 'http://piontekle.herokuapp.com']
+var whitelist = ['http://localhost:3000', 'http://www.piontekle.com', 'http://piontekle.herokuapp.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
