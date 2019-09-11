@@ -31,7 +31,7 @@ const Footer = () => (
   <footer>
     <nav id="footer-nav">
       <a className="link footer-link" href="https://github.com/crsandeep/simple-react-full-stack" target="_blank">Boilerplate</a>
-      <Link className="link footer-link" to="/">Admin</Link>
+      <Link className="link footer-link" to="/sign-in">Admin</Link>
     </nav>
   </footer>
 )

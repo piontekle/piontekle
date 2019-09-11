@@ -1,30 +1,53 @@
 require("dotenv").config();
 const express = require('express');
 const app = express();
-var path = require('path');
+const morgan = require("morgan");
+const path = require('path');
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 
-const routes = require('./routes.js');
+const routes = require('./api');
+const passportStrategy = require('./auth/index');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(morgan("dev"));
+
 //CORS
-app.use(cors());
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+var whitelist = ['http://localhost:3000', 'http://piontekle.com', 'http://piontekle.herokuapp.com']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}
 
-  next();
-});
+app.use(cors(corsOptions));
 
-//serve static files from dist and get routes
+//Session setting and passport initialization
+app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        path: '/',
+        maxAge: 1.21e+9,
+        secure: false,
+        httpOnly: false
+      }
+    }));
+passportStrategy.init(app);
+
+// serve static files from dist and get routes
 app.use(express.static('dist'));
-app.use('/', routes);
+routes.init(app);
 app.use(express.static(path.join(__dirname, '..', '..', 'dist')));
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '..', '..', '/dist/index.html'));

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
 
-const creds = require('./config_var');
+const creds = require('../config/email-config');
 
 const transport = {
   host: 'smtp.gmail.com',
@@ -23,7 +23,7 @@ transporter.verify((error, success) => {
 });
 
 //send mail code
-app.post('/sendMail', (req, res, next) => {
+app.post('/api/sendMail', (req, res, next) => {
   const email_content = {
     name: req.body.name,
     email: req.body.email,

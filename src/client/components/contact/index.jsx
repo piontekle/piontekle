@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './contact.css';
 
 class Contact extends Component {
   constructor() {
@@ -44,7 +43,7 @@ class Contact extends Component {
     e.preventDefault();
     const { url, name, email, subject, message } = this.state;
 
-    axios.post(`${url}/sendMail`, {
+    axios.post(`${url}/api/sendMail`, {
       name,
       email,
       subject,
@@ -65,7 +64,7 @@ class Contact extends Component {
     const { name, email, subject, message } = this.state;
 
     return (
-      <section className="card contact-card">
+      <section className="card form-card">
         <form id="contact-form" onSubmit={(e) => this.handleSubmit(e)} method="POST">
           <h3 className="card-heading">Email Me</h3>
           <label htmlFor="name">Name:</label>
