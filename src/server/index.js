@@ -41,18 +41,18 @@ app.use(cors());
 //     })
 
 //Session setting and passport initialization
-app.use(cookieParser(process.env.SESSION_SECRET));
-app.use(session({
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        path: '/',
-        maxAge: 1.21e+9,
-        secure: false,
-        httpOnly: false
-      }
-    }));
+app.use(cookieParser());
+// app.use(session({
+//       secret: process.env.SESSION_SECRET,
+//       resave: false,
+//       saveUninitialized: false,
+//       cookie: {
+//         path: '/',
+//         maxAge: 1.21e+9,
+//         secure: false,
+//         httpOnly: false
+//       }
+//     }));
 passportStrategy.init(app);
 
 // serve static files from dist and get routes

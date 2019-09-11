@@ -1,40 +1,28 @@
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-
-const authHelper = require('./helpers');
+const passportJWT = require('passport-jwt');
 
 const User = require('../db/models').User;
+
+let ExtractJwt = passportJWT.ExtractJwt;
+let JwtStrategy = passportJWT.Strategy;
+let jwtOptions = {};
+
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = process.env.JWT_SECRET;
 
 module.exports = {
   init(app){
     app.use(passport.initialize());
-    app.use(passport.session());
 
-    passport.use(new LocalStrategy({ usernameField: "username"}, (username, password, done) => {
-      User.findOne({ where: { username: username }})
+    passport.use(new JwtStrategy(jwtOptions, (jwt_payload, next) => {
+      console.log('passport jwt initialize');
+      User.findByPk(jwt_payload.id)
       .then(user => {
         if (!user) {
-          return done(null, false, { msg: 'User not found'});
-        } else if (!authHelper.validatePassword(password, user.password)) {
-          return done(null, false, { msg: 'Invalid password'});
+          return next(null, false, { msg: 'User not found'});
         }
-        return done(null, user);
+        return next(null, user);
       })
     }));
-
-    passport.serializeUser((user, callback) => {
-      callback(null, user.id);
-    });
-
-    passport.deserializeUser((id, callback) => {
-      User.findByPk(id)
-      .then((user) => {
-        callback(null, user);
-      })
-      .catch((err => {
-        callback(err, user);
-      }))
-    });
-
   }
-}
+};

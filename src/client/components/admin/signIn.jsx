@@ -14,6 +14,7 @@ class SignIn extends Component {
     }
 
     this.getURL = this.getURL.bind(this);
+    axios.defaults.headers.post['Content-Type'] = 'application/json'
   }
 
   componentDidMount() {
@@ -55,7 +56,8 @@ class SignIn extends Component {
       }
     })
     .catch(err => {
-      alert(err.response);
+      console.log(err.response.data)
+      alert(err.response.data);
     })
   }
 
