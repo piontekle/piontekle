@@ -14,8 +14,6 @@ class SignIn extends Component {
     }
 
     this.getURL = this.getURL.bind(this);
-
-    axios.defaults.withCredentials = true;
   }
 
   componentDidMount() {

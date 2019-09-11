@@ -16,28 +16,29 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 //CORS
-var whitelist = ['http://localhost:3000', 'http://piontekle.com', 'http://piontekle.herokuapp.com']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
-}
 
-app.use(cors(corsOptions))
+// var whitelist = ['http://localhost:3000', 'http://piontekle.com', 'http://piontekle.herokuapp.com']
+// var corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true
+// }
 
-app.use(function(req, res, next) {
-      res.setHeader("Access-Control-Allow-*", "*");
-      res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-      res.setHeader("Access-Control-Allow-Credentials", "true");
-      res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+app.use(cors());
 
-      next();
-    })
+// app.use(function(req, res, next) {
+//       res.setHeader("Access-Control-Allow-Origin", "*");
+//       res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+//       res.setHeader("Access-Control-Allow-Credentials", "true");
+//       res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+//
+//       next();
+//     })
 
 //Session setting and passport initialization
 app.use(cookieParser(process.env.SESSION_SECRET));
