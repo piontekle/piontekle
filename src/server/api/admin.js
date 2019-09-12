@@ -22,6 +22,7 @@ app.post('/api/adminIn', (req, res, next) => {
 });
 
 app.get('/api/checkAdmin', authHelper.ensureAuth, function(req, res) {
+  console.log("ENSURE AUTH SUCCESS")
   res.sendStatus(200);
 });
 

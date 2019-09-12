@@ -18,13 +18,13 @@ function withAuth(AdminComponent) {
         redirect: false
       }
 
-      axios.defaults.withCredentials = true;
-
+      axios.defaults.headers.common['Content-Type'] = 'application/json'
     }
 
     componentDidMount() {
       console.log('calling checkAdmin')
       let url = getURL();
+      console.log(url)
 
       axios.get(`${url}/api/checkAdmin`)
       .then(res => {
@@ -54,9 +54,9 @@ function withAuth(AdminComponent) {
         return (<div>Loading Admin...</div>)
       }
 
-      /*if (redirect) {
+      if (redirect) {
         return <Redirect to="/sign-in" />;
-      }*/
+      }
 
       return (
         <AuthUserContext.Provider value={admin}>
