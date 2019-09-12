@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 //CORS config to allow React to send cookie
-var whitelist = ['http://localhost:3000', 'http://piontekle.com', 'https://piontekle.com', 'http://piontekle.herokuapp.com', 'https://piontekle.herokuapp.com']
+var whitelist = ['http://localhost:3000', 'http://www.piontekle.com', 'https://www.piontekle.com', 'http://piontekle.herokuapp.com', 'https://piontekle.herokuapp.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -28,7 +28,7 @@ var corsOptions = {
   credentials: true
 }
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 // app.use(function(req, res, next) {
 //       res.setHeader("Access-Control-Allow-Origin", "*");
@@ -42,11 +42,12 @@ app.use(cors());
 app.use(cookieParser());
 
 // serve static files from dist and get routes
-app.use(express.static('dist'));
-routes.init(app);
-app.use(express.static(path.join(__dirname, '..', '..', 'dist')));
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '..', '..', '/dist/index.html'));
+const dir = process.env.NODE_ENV == 'production' ? 'dist' : 'public'
+app.get('/', express.static(dir));
+app.use(express.static(path.join(__dirname, '..', '..', dir)));
+app.all('*', function(req, res) {
+  res.sendFile(path.join(__dirname, '..', '..', `/${dir}/index.html`));
 });
+routes.init(app);
 
 module.exports = app;

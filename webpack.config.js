@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const outputDirectory = 'dist';
+const outputDirectory = process.env.NODE_ENV == 'production' ? 'dist' : 'public';
 
 module.exports = {
   entry: ['babel-polyfill', './src/client/index.js'],
@@ -39,7 +39,6 @@ module.exports = {
     }
   },
   plugins: [
-    new CleanWebpackPlugin([outputDirectory]),
     new HtmlWebpackPlugin({
       template: './public/index.html'
     })
