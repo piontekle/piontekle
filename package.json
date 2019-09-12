@@ -11,7 +11,7 @@
     "server": "nodemon src/server/server.js",
     "dev": "concurrently \"npm run client\"  \"npm run server\"",
     "heroku-prebuild": "npm install --dev",
-    "heroku-postbuild": "webpack --config webpack.config.js"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install  npm run build"
   },
   "author": "Lauren Piontek",
   "license": "ISC",
