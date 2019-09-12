@@ -23,7 +23,7 @@ transporter.verify((error, success) => {
 });
 
 //send mail code
-app.post('/api/sendMail', (req, res, next) => {
+app.post('/sendMail', (req, res, next) => {
   const email_content = {
     name: req.body.name,
     email: req.body.email,
