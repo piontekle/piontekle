@@ -2,9 +2,19 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
+import { AuthUserContext } from './auth';
 import getURL from '../functions/getURL';
 
-class SignIn extends Component {
+const SignIn = () => (
+  <AuthUserContext.Consumer>
+  {
+    admin =>
+    !admin ? <SignInForm /> : <Redirect to="/admin" />
+  }
+  </AuthUserContext.Consumer>
+)
+
+class SignInForm extends Component {
   constructor() {
     super();
 

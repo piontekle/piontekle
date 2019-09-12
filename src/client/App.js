@@ -27,7 +27,7 @@ export default class App extends Component {
             <Route path="/projects" component={Projects} />
             <Route path="/skills" component={Skills} />
             <Route path="/contact" component={Contact} />
-            <Route path="/sign-in" component={SignIn} />
+            <Route path="/sign-in" component={withAuth(SignIn)} />
             <Route path="/admin" component={withAuth(Admin)} />
           </div>
           <Footer />
