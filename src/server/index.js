@@ -23,6 +23,7 @@ var corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
+  allowedHeaders: "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Cache-Control",
   cacheControl: "no-store,no-cache,must-revalidate",
   credentials: true
 }
