@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 //CORS config to allow React to send cookie
-var whitelist = ['http://localhost:3000', 'http://piontekle.com', 'http://piontekle.herokuapp.com']
+var whitelist = ['http://localhost:3000', 'http://piontekle.com', 'https://piontekle.com', 'http://piontekle.herokuapp.com', 'https://piontekle.herokuapp.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
