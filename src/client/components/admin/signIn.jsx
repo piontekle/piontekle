@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
+import getURL from '../functions/getURL';
+
 class SignIn extends Component {
   constructor() {
     super();
@@ -13,26 +15,11 @@ class SignIn extends Component {
       password: ''
     }
 
-    this.getURL = this.getURL.bind(this);
-    axios.defaults.headers.post['Content-Type'] = 'application/json'
+    axios.defaults.withCredentials = true;
   }
 
   componentDidMount() {
-    this.getURL();
-  }
-
-  getURL() {
-    let host = window.location.hostname;
-    let protocol = window.location.protocol;
-    let url = null;
-
-    if (host === "localhost") {
-      url = protocol + "//" + host + ":8080"
-    } else {
-      url = protocol + "//" + "piontekle.herokuapp.com"
-    }
-
-    this.setState({ url: url });
+    this.setState({ url: getURL() });
   }
 
   handleChange = value => e => {
@@ -49,14 +36,12 @@ class SignIn extends Component {
     })
     .then(res => {
       if (res.data.msg === 'admin logged in') {
-        console.log('yay admin login')
         this.setState({ redirect: true });
       } else {
         alert(`Login Error: ${res.data.msg}`);
       }
     })
     .catch(err => {
-      console.log(err.response.data)
       alert(err.response.data);
     })
   }

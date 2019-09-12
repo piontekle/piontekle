@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
   setPassword(password) {
@@ -10,10 +11,23 @@ module.exports = {
     return bcrypt.compareSync(password, hash);
   },
   ensureAuth(req, res, next) {
-    if (!req.user){
-      return res.sendStatus(401);
+    const token =
+      req.body.token ||
+      req.query.token ||
+      req.headers['x-access-token'] ||
+      req.cookies.token;
+
+    if (!token) {
+      res.status(401).send('Unauthorized: No token provided');
     } else {
-      next();
+      jwt.verify(token, process.env.JWT_SECRET, function(err, decoded) {
+        if (err) {
+          res.status(401).send('Unauthorized: Invalid token');
+        } else {
+          req.email = decoded.email;
+          next();
+        }
+      });
     }
   }
 }

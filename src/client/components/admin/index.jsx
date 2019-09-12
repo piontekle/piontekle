@@ -10,7 +10,7 @@ const Admin = () => (
   <AuthUserContext.Consumer>
   {
     admin =>
-    admin ? <AdminBlog /> : null
+    admin ? <AdminBlog /> : <div>No dice <Link to="/sign-in">Sign-in</Link></div>
   }
   </AuthUserContext.Consumer>
 )

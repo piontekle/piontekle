@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
+import getURL from '../functions/getURL';
+
 const AuthUserContext = React.createContext(null);
 
 function withAuth(AdminComponent) {
@@ -10,30 +12,19 @@ function withAuth(AdminComponent) {
       super();
 
       this.state = {
+        url: null,
         admin: false,
         loading: true,
         redirect: false
       }
 
-    }
+      axios.defaults.withCredentials = true;
 
-    getURL() {
-      let host = window.location.hostname;
-      let protocol = window.location.protocol;
-      let url = null;
-
-      if (host === "localhost") {
-        url = protocol + "//" + host + ":8080"
-      } else {
-        url = protocol + "//" + "piontekle.herokuapp.com"
-      }
-
-      return url
     }
 
     componentDidMount() {
       console.log('calling checkAdmin')
-      let url = this.getURL();
+      let url = getURL();
 
       axios.get(`${url}/api/checkAdmin`)
       .then(res => {
@@ -63,9 +54,9 @@ function withAuth(AdminComponent) {
         return (<div>Loading Admin...</div>)
       }
 
-      if (redirect) {
+      /*if (redirect) {
         return <Redirect to="/sign-in" />;
-      }
+      }*/
 
       return (
         <AuthUserContext.Provider value={admin}>

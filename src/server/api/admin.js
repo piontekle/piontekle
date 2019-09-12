@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
 const authHelper = require('../auth/helpers');
@@ -14,20 +13,20 @@ app.post('/api/adminIn', (req, res, next) => {
     if (authHelper.validatePassword(password, user.password)) {
       let payload = { id: user.id };
       let token = jwt.sign(payload, process.env.JWT_SECRET);
-      res.json({ msg: 'admin logged in', token: token});
+
+      res.cookie('token', token, { httpOnly: true }).json({ msg: 'admin logged in'});
     } else {
-      res.status(401).json({ msg: 'Password is incorrect' });
+      res.status(401).json({ msg: 'Password is incorrect' })
     }
   })
 });
 
-app.get('/api/checkAdmin', passport.authenticate('jwt', {session: false}), function(req, res) {
-  console.log('checking admin');
+app.get('/api/checkAdmin', authHelper.ensureAuth, function(req, res) {
   res.sendStatus(200);
 });
 
 app.post('/api/adminOut', (req, res, next) => {
-  req.logout();
+  res.clearCookie('token');
   res.status(200).json({ msg: 'admin logged out' });
 })
 

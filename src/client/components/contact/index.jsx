@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import getURL from '../functions/getURL';
+
 class Contact extends Component {
   constructor() {
     super()
@@ -12,27 +14,10 @@ class Contact extends Component {
       subject: "Saw your portfolio - let's get in touch!",
       message: ""
     }
-
-
-    this.getURL = this.getURL.bind(this);
   }
 
   componentDidMount() {
-    this.getURL();
-  }
-
-  getURL() {
-    let host = window.location.hostname;
-    let protocol = window.location.protocol;
-    let url = null;
-
-    if (host === "localhost") {
-      url = protocol + "//" + host + ":8080"
-    } else {
-      url = protocol + "//" + "piontekle.herokuapp.com"
-    }
-
-    this.setState({ url: url });
+    this.setState({ url: getURL() });
   }
 
   handleChange = value => e => {
@@ -43,7 +28,7 @@ class Contact extends Component {
     e.preventDefault();
     const { url, name, email, subject, message } = this.state;
 
-    axios.post(`${url}/api/sendMail`, {
+    axios.post(`${url}/sendMail`, {
       name,
       email,
       subject,

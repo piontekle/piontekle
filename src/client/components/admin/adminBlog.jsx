@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import getURL from '../functions/getURL';
+
 class AdminBlog extends Component {
   constructor() {
     super();
@@ -8,26 +10,10 @@ class AdminBlog extends Component {
     this.state = {
       url: null
     }
-
-    this.getURL = this.getURL.bind(this);
   }
 
   componentDidMount() {
-    this.getURL();
-  }
-
-  getURL() {
-    let host = window.location.hostname;
-    let protocol = window.location.protocol;
-    let url = null;
-
-    if (host === "localhost") {
-      url = protocol + "//" + host + ":8080"
-    } else {
-      url = protocol + "//" + "piontekle.herokuapp.com"
-    }
-
-    this.setState({ url: url });
+    this.setState({ url: getURL() });
   }
 
   signOut(e) {

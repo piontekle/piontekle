@@ -3,33 +3,31 @@ const express = require('express');
 const app = express();
 const morgan = require("morgan");
 const path = require('path');
-const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 
 const routes = require('./api');
-const passportStrategy = require('./auth/index');
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-//CORS
+//CORS config to allow React to send cookie
+var whitelist = ['http://localhost:3000', 'http://piontekle.com', 'http://piontekle.herokuapp.com']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  cacheControl: "no-store,no-cache,must-revalidate",
+  credentials: true
+}
 
-// var whitelist = ['http://localhost:3000', 'http://piontekle.com', 'http://piontekle.herokuapp.com']
-// var corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true)
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   credentials: true
-// }
-
-app.use(cors());
+app.use(cors(corsOptions));
 
 // app.use(function(req, res, next) {
 //       res.setHeader("Access-Control-Allow-Origin", "*");
@@ -40,20 +38,7 @@ app.use(cors());
 //       next();
 //     })
 
-//Session setting and passport initialization
 app.use(cookieParser());
-// app.use(session({
-//       secret: process.env.SESSION_SECRET,
-//       resave: false,
-//       saveUninitialized: false,
-//       cookie: {
-//         path: '/',
-//         maxAge: 1.21e+9,
-//         secure: false,
-//         httpOnly: false
-//       }
-//     }));
-passportStrategy.init(app);
 
 // serve static files from dist and get routes
 app.use(express.static('dist'));
