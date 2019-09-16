@@ -35,14 +35,23 @@ describe("routes : posts", () => {
     })
   });
 
+  describe("GET /:id", () => {
+    it("should return the selected post", (done) => {
+      request.get(`${base}${this.post.id}`, (err, res, body) => {
+        expect(err).toBeNull();
+        expect(body).toContain("Post Stuff");
+        done();
+      })
+    })
+  });
+
   describe("POST /new-post", () => {
     it("should create a new post", (done) => {
       const options = {
         url: `${base}new-post`,
         form: {
           title: "New Post",
-          content: "This is new content",
-          topics: ["newness"]
+          content: "This is new content"
         }
       };
 
@@ -51,7 +60,6 @@ describe("routes : posts", () => {
         .then((post) => {
           expect(post.title).toBe("New Post");
           expect(post.content).toBe("This is new content");
-          expect(post.topics).toEqual(["newness"]);
           done();
         })
         .catch((err) => {
@@ -63,24 +71,13 @@ describe("routes : posts", () => {
     })
   });
 
-  describe("GET /:post-title", () => {
-    it("should return the selected post", (done) => {
-      request.get(`${base}${this.topic.title}`, (err, res, body) => {
-        expect(err).toBeNull();
-        expect(body).toContain("Post Stuff");
-        done();
-      })
-    })
-  });
-
-  describe("POST /post-update", () => {
+  describe("POST /:id/update", () => {
     it("should update the post with the given values", (done) => {
       const options = {
-        url: `${base}post-update`,
+        url: `${base}${this.post.id}/update`,
         form: {
           title: "This Post Stuff",
-          content: "Yasss queen yasss",
-          topics: ["yeet"]
+          content: "Yasss queen yasss"
         }
       };
 
@@ -91,21 +88,21 @@ describe("routes : posts", () => {
         .then((post) => {
           expect(post.title).toBe("This Post Stuff");
           expect(post.content).toBe("Yasss queen yasss");
-          expect(post.topics).toEqual(["yeet"]);
+          expect(post.topics).toEqual(["posts"]);
           done();
         })
       })
     })
   });
 
-  describe("POST /post-delete", () => {
+  describe("POST /:id/delete", () => {
     it("should delete the post with the associated ID", (done) => {
       Post.findAll()
       .then((posts) => {
         const postCountBefore = posts.length;
         expect(postCountBefore).toBe(1);
 
-        request.post(`${base}post-delete`, (err, res, body) => {
+        request.post(`${base}${this.post.id}/delete`, (err, res, body) => {
           Post.findAll()
           .then((posts) => {
             expect(err).toBeNull();
