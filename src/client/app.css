@@ -39,6 +39,10 @@ button {
   border-radius: 15px;
 }
 
+.hidden {
+  display: none;
+}
+
 /*general body + card styling*/
 
 .app-container {

@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 import { AuthUserContext } from './auth';
 
-import AdminBlog from './adminBlog';
+import BlogIndex from '../blog';
 
 const Admin = () => (
   <AuthUserContext.Consumer>
   {
     admin =>
-    admin ? <AdminBlog /> : <div>No dice <Link className="link" to="/sign-in">Sign-in</Link></div>
+    admin ? <BlogIndex admin={admin} /> : <div>No dice <Link className="link" to="/sign-in">Sign-in</Link></div>
   }
   </AuthUserContext.Consumer>
 )

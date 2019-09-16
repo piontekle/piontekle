@@ -4,16 +4,13 @@ import axios from 'axios';
 import getURL from '../functions/getURL';
 
 class AdminBlog extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      url: null
+      url: this.props.url,
+      posts: this.props.posts
     }
-  }
-
-  componentDidMount() {
-    this.setState({ url: getURL() });
   }
 
   signOut(e) {
@@ -22,7 +19,6 @@ class AdminBlog extends Component {
 
     axios.post(`${url}/api/admin-out`)
     .then(res => {
-      console.log(res.data.msg);
       window.location = "/";
     })
     .catch(err => {
@@ -32,10 +28,15 @@ class AdminBlog extends Component {
 
   render() {
     return (
-      <section className="card">
-      <div>Woo Admin Blog</div>
-      <button onClick={this.signOut.bind(this)}>Sign Out</button>
-      </section>
+      <>
+        <section className="page-heading">
+          <h2>Woo Admin Blog</h2>
+          <button onClick={this.signOut.bind(this)}>Sign Out</button>
+        </section>
+        <section className="card">
+
+        </section>
+      </>
     )
   }
 }

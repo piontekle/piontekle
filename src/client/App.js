@@ -12,6 +12,7 @@ import Skills from './components/skills';
 import Contact from './components/contact';
 import Admin from './components/admin';
 import SignIn from './components/admin/signIn';
+import BlogIndex from './components/blog';
 
 export default class App extends Component {
 
@@ -29,6 +30,7 @@ export default class App extends Component {
             <Route path="/contact" component={Contact} />
             <Route path="/sign-in" component={withAuth(SignIn)} />
             <Route path="/admin" component={withAuth(Admin)} />
+            <Route path="/blog" component={BlogIndex} />
           </div>
           <Footer />
         </div>
