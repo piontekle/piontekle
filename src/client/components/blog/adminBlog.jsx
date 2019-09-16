@@ -34,7 +34,18 @@ class AdminBlog extends Component {
           <button onClick={this.signOut.bind(this)}>Sign Out</button>
         </section>
         <section className="card">
-
+        <ul>
+        {
+          posts ? "No posts yet" :
+          posts.map(post => {
+            <li
+              key={post.id}
+            >
+              {post.title} {post.createdAt}
+            </li>
+          })
+        }
+        </ul>
         </section>
       </>
     )
