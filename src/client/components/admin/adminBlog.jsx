@@ -20,7 +20,7 @@ class AdminBlog extends Component {
     e.preventDefault();
     const { url } = this.state;
 
-    axios.post(`${url}/api/adminOut`)
+    axios.post(`${url}/api/admin-out`)
     .then(res => {
       console.log(res.data.msg);
       window.location = "/";

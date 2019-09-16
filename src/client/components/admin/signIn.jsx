@@ -40,7 +40,7 @@ class SignInForm extends Component {
     e.preventDefault();
     const { url, username, password } = this.state;
 
-    axios.post(`${url}/api/adminIn`, {
+    axios.post(`${url}/api/admin-in`, {
       username,
       password
     })

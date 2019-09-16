@@ -12,7 +12,6 @@ function withAuth(AdminComponent) {
       super();
 
       this.state = {
-        url: null,
         admin: false,
         loading: true,
         redirect: false
@@ -20,10 +19,9 @@ function withAuth(AdminComponent) {
     }
 
     componentDidMount() {
-      console.log('calling checkAdmin')
       let url = getURL();
 
-      axios.get(`${url}/api/checkAdmin`)
+      axios.get(`${url}/api/check-admin`)
       .then(res => {
         if (res.status === 200) {
           this.setState({

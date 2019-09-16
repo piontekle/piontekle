@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const authHelper = require('../auth/helpers');
 const User = require('../db/models').User;
 
-app.post('/api/adminIn', (req, res, next) => {
+app.post('/api/admin-in', (req, res, next) => {
   const { username, password } = req.body;
 
   User.findOne({where: {username: username} })
@@ -21,11 +21,11 @@ app.post('/api/adminIn', (req, res, next) => {
   })
 });
 
-app.get('/api/checkAdmin', authHelper.ensureAuth, function(req, res) {
+app.get('/api/check-admin', authHelper.ensureAuth, function(req, res) {
   res.sendStatus(200);
 });
 
-app.post('/api/adminOut', (req, res, next) => {
+app.post('/api/admin-out', (req, res, next) => {
   res.clearCookie('token');
   res.status(200).json({ msg: 'admin logged out' });
 })
