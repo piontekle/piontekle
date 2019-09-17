@@ -9,7 +9,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    topics: DataTypes.ARRAY(DataTypes.STRING)
+    topics: DataTypes.ARRAY(DataTypes.STRING),
+    slug: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {});
   Post.associate = function(models) {
     // associations can be defined here

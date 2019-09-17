@@ -28,7 +28,8 @@ app.post('/api/new-post', (req, res, next) => {
   let newPost = {
     title: req.body.title,
     content: req.body.content,
-    topics: req.body.topics
+    topics: req.body.topics,
+    slug: req.body.slug
   }
 
   postQueries.newPost(newPost, (err, post) => {
@@ -54,7 +55,6 @@ app.post('/api/:id/update', (req, res, next) => {
 app.post('/api/:id/delete', (req, res, next) => {
   postQueries.deletePost(req, (err, post) => {
     if (err) {
-      console.log()
       res.status(500).json({ msg: 'Error deleting post' });
     } else {
       res.status(200).json({ msg: 'post successfully deleted' });

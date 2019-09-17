@@ -23,7 +23,8 @@ module.exports = {
     return Post.create({
       title: newPost.title,
       content: newPost.content,
-      topics: newPost.topics
+      topics: newPost.topics,
+      slug: newPost.slug
     })
     .then(post => {
       callback(null, post);

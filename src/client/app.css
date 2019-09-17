@@ -29,6 +29,13 @@ p {
   border-bottom: 5px solid #44DFD6;
 }
 
+small {
+  display: block;
+  margin-left: 10px;
+  font-style: italic;
+  color: #6C6969;
+}
+
 button {
   margin: 5px;
 

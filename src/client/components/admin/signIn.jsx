@@ -74,7 +74,7 @@ class SignInForm extends Component {
             placeholder="username"
             onChange={this.handleChange("username")}
           />
-          <label htmlFor="subject">Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
             autoComplete="current-password"

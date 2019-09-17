@@ -13,6 +13,7 @@ const Header = () => (
       <Link className="link header-link" to="/about">About</Link>
       <Link className="link header-link" to="/projects">Projects</Link>
       <Link className="link header-link" to="/skills">Skills</Link>
+      <Link className="link header-link" to="/blog">Blog</Link>
     </nav>
   </header>
 )

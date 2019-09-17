@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import getURL from '../functions/getURL';
@@ -26,11 +27,27 @@ class AdminBlog extends Component {
     })
   }
 
+  handleDelete(e, postId) {
+    e.preventDefault();
+    const { url } = this.state;
+
+    axios.post(`${url}/api/${postId}/delete`)
+    .then(res => {
+      alert('Post deleted!');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   render() {
+      const { posts } = this.state;
+
     return (
       <>
         <section className="page-heading">
           <h2>Woo Admin Blog</h2>
+          <Link className="link" to="/new-post">New Post</Link>
           <button onClick={this.signOut.bind(this)}>Sign Out</button>
         </section>
         <section className="card">
@@ -41,7 +58,15 @@ class AdminBlog extends Component {
             <li
               key={post.id}
             >
-              {post.title} {post.createdAt}
+              <Link
+                className="link"
+                pathname={`/blog/${post.slug}`}
+                state={ {id: post.id} }
+              >
+                {post.title} {post.createdAt}
+              </Link>
+              <Link className="link" to={`/${post.id}/edit-post`}>Edit</Link>
+              <button onClick={this.handleDelete(e, post.id)}>Delete</button>
             </li>
           })
         }

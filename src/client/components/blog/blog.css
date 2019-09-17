@@ -1,1 +1,11 @@
+.list-card {
+  height: 500px;
+}
 
+.blog-form-card {
+  height: auto;
+}
+
+.blog-label {
+  display: block;
+}
