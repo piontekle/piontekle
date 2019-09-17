@@ -28,12 +28,14 @@ class BlogPost extends Component {
 
   render() {
     const { post } = this.state;
+    let posted = new Date(post.createdAt).toDateString();
 
     return (
       <>
         <section className="page-heading">
           <h2>{post.title}</h2>
-          <p>{post.createdAt}</p>
+          <p>{posted}</p>
+          <p>{post.topics ? post.topics.map(topic => topic) : null}</p>
         </section>
         <section>
           <p>{post.content}</p>

@@ -25,12 +25,11 @@ class NewBlog extends Component {
     let url = getURL();
 
     let slug = title.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
-    let topicsArray = topics.split(', ');
 
     axios.post(`${url}/api/new-post`, {
       title,
       content,
-      topicsArray,
+      topics,
       slug
     })
 

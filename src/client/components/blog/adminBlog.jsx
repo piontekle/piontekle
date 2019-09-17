@@ -14,8 +14,7 @@ class AdminBlog extends Component {
     }
   }
 
-  signOut(e) {
-    e.preventDefault();
+  signOut() {
     const { url } = this.state;
 
     axios.post(`${url}/api/admin-out`)
@@ -29,11 +28,14 @@ class AdminBlog extends Component {
 
   handleDelete(e, postId) {
     e.preventDefault();
-    const { url } = this.state;
+    const { url, posts } = this.state;
+
+    let updatedPosts = posts.filter(post => post.id !== postId);
 
     axios.post(`${url}/api/${postId}/delete`)
     .then(res => {
       alert('Post deleted!');
+      this.setState({ posts: updatedPosts });
     })
     .catch(err => {
       console.log(err);
@@ -53,20 +55,22 @@ class AdminBlog extends Component {
         <section className="card">
         <ul>
         {
-          posts ? "No posts yet" :
+          posts[0] === undefined ? "No posts yet" :
           posts.map(post => {
-            <li
+            return <li
               key={post.id}
             >
               <Link
                 className="link"
-                pathname={`/blog/${post.slug}`}
-                state={ {id: post.id} }
+                to={{
+                  pathname: `/blog/${post.slug}`,
+                  state: { id: post.id }
+                }}
               >
-                {post.title} {post.createdAt}
+                {post.title} {new Date(post.createdAt).toDateString()}
               </Link>
               <Link className="link" to={`/${post.id}/edit-post`}>Edit</Link>
-              <button onClick={this.handleDelete(e, post.id)}>Delete</button>
+              <button onClick={(e, id) => this.handleDelete(e, post.id)}>Delete</button>
             </li>
           })
         }

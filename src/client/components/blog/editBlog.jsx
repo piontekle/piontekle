@@ -9,21 +9,25 @@ class EditBlog extends Component {
 
     this.state = {
       url: null,
-      post: null,
+      id: this.props.match.params.id,
       title: '',
       content: '',
       topics: []
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     let url = getURL();
 
-    axios.get(`${url}/api/${this.props.match.params.id}`)
+    await axios.get(`${url}/api/${this.state.id}`)
     .then(res => {
+      /* let topics = res.data.post.topics.join(", "); */
+
       this.setState({
         url: url,
-        post: res.data.post
+        title: res.data.post.title,
+        content: res.data.post.content,
+        topics: res.data.post.topics || ''
       })
     })
     .catch(err => {
@@ -37,22 +41,21 @@ class EditBlog extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { post, title, content, topics } = this.state;
+    const { id, title, content, topics } = this.state;
     let url = getURL();
 
     let slug = title.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
-    let topicsArray = topics.split(', ');
 
-    axios.post(`${url}/api/${post.id}/update`, {
+    axios.post(`${url}/api/${id}/update`, {
       title,
       content,
-      topicsArray,
+      topics,
       slug
     })
   }
 
   render() {
-    const { post, title, content, topics } = this.state;
+    const { title, content, topics } = this.state;
 
     return (
       <section className="card blog-form-card">
@@ -63,14 +66,14 @@ class EditBlog extends Component {
             type="text"
             autoComplete="username"
             name="title"
-            value={post.title}
+            value={title}
             onChange={this.handleChange("title")}
           />
           <label className="blog-label" htmlFor="content">Content:</label>
           <textarea
             name="content"
             rows="10"
-            value={post.content}
+            value={content}
             onChange={this.handleChange("content")}
           >
           </textarea>
@@ -79,7 +82,7 @@ class EditBlog extends Component {
             type="text"
             autoComplete="topics"
             name="topics"
-            value={post.topics}
+            value={topics}
             onChange={this.handleChange("topics")}
           />
           <small>Comma separated</small>
