@@ -43,7 +43,10 @@ components */
 
     return (
       <>
-        { loading ? <div> LOADING... </div> : (admin ?
+        { loading ?
+          <div>
+            LOADING... It could take up to 30s on initial load, thank you for your patience!
+          </div> : (admin ?
           <AdminBlog
             url={url}
             posts={posts}
