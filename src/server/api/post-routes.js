@@ -25,7 +25,7 @@ app.get('/api/:id', (req, res, next) => {
 });
 
 app.post('/api/new-post', (req, res, next) => {
-  let topics = req.body.topics.split(', ');
+  let topics = req.body.topics[0] ? req.body.topics.split(', ') : [];
 
   let newPost = {
     title: req.body.title,
@@ -39,15 +39,14 @@ app.post('/api/new-post', (req, res, next) => {
       console.log(err);
       res.status(500).json({ msg: err });
     } else {
-      console.log(post.topics)
       res.status(200).json({ msg: 'post created' });
     }
   })
 });
 
 app.post('/api/:id/update', (req, res, next) => {
-  req.body.topics = req.body.topics.split(', ');
-  
+  req.body.topics = req.body.topics[0] ? req.body.topics.split(', ') : [];
+
   postQueries.updatePost(req, req.body, (err, post) => {
     if (err || post === null) {
       res.status(404).json({ msg: `Error updating post: ${err}`});

@@ -14,9 +14,8 @@ p {
 }
 
 .link {
-  margin-left: 20px;
   text-decoration: none;
-
+  color: #44DFD6;
   font-weight: bold;
 }
 

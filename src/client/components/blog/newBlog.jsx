@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './blog.css'
 
@@ -12,6 +13,7 @@ class NewBlog extends Component {
       title: '',
       content: '',
       topics: [],
+      success: false
     })
   }
 
@@ -32,11 +34,21 @@ class NewBlog extends Component {
       topics,
       slug
     })
+    .then(res => {
+      if (res.data.msg === 'post created') {
+        this.setState({ success: true });
+      }
+    })
+    .catch(err => {
+      alert(err);
+    })
 
   }
 
   render() {
-    const { title, content, topics } = this.state;
+    const { title, content, topics, success } = this.state;
+
+    if (success) return <Redirect to="/admin" />
 
     return (
       <section className="card blog-form-card">

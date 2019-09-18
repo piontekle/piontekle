@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './blog.css';
 
 import getURL from '../functions/getURL';
 

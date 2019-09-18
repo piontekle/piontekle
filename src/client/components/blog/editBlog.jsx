@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import getURL from '../functions/getURL';
@@ -12,7 +13,8 @@ class EditBlog extends Component {
       id: this.props.match.params.id,
       title: '',
       content: '',
-      topics: []
+      topics: [],
+      success: false
     }
   }
 
@@ -21,13 +23,13 @@ class EditBlog extends Component {
 
     await axios.get(`${url}/api/${this.state.id}`)
     .then(res => {
-      /* let topics = res.data.post.topics.join(", "); */
+      let topics = res.data.post.topics ? res.data.post.topics.join(", ") : '';
 
       this.setState({
         url: url,
         title: res.data.post.title,
         content: res.data.post.content,
-        topics: res.data.post.topics || ''
+        topics: topics
       })
     })
     .catch(err => {
@@ -52,15 +54,25 @@ class EditBlog extends Component {
       topics,
       slug
     })
+    .then(res => {
+      if (res.data.msg === 'post successfully updated') {
+        this.setState({ success: true })
+      }
+    })
+    .catch(err => {
+      alert(err);
+    })
   }
 
   render() {
-    const { title, content, topics } = this.state;
+    const { title, content, topics, success } = this.state;
+
+    if (success) return <Redirect to="/admin" />
 
     return (
       <section className="card blog-form-card">
         <form id="contact-form" onSubmit={(e) => this.handleSubmit(e)} method="POST">
-          <h3 className="card-heading">New Blog Post</h3>
+          <h3 className="card-heading">Edit Blog Post</h3>
           <label className="blog-label" htmlFor="title">Title:</label>
           <input
             type="text"

@@ -2,17 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-import { AuthUserContext } from './auth';
 import getURL from '../functions/getURL';
 
-/* const SignIn = () => (
-  <AuthUserContext.Consumer>
-  {
-    admin =>
-    !admin ? <SignInForm /> : <Redirect to="/admin" />
-  }
-  </AuthUserContext.Consumer>
-) */
 
 class SignIn extends Component {
   constructor() {
@@ -28,8 +19,24 @@ class SignIn extends Component {
     axios.defaults.withCredentials = true;
   }
 
-  componentDidMount() {
-    this.setState({ url: getURL() });
+  async componentDidMount() {
+    let url = getURL();
+
+    await axios.get(`${url}/api/check-admin`)
+    .then(res => {
+      if (res.status === 200) {
+        this.setState({
+          url: url,
+          redirect: true
+        });
+      }
+    })
+    .catch(err => {
+      this.setState({
+        url: url,
+        redirect: false
+      });
+    })
   }
 
   handleChange = value => e => {

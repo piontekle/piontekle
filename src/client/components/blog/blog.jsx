@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './blog.css';
 
 import getURL from '../functions/getURL';
 
@@ -30,12 +29,12 @@ class Blog extends Component {
         !loading &&
           <>
             <section className="page-heading">
-              <h2>Woo Blog</h2>
+              <h2>Blog</h2>
             </section>
             <section className="card list-card">
               <ul>
               {
-                posts[0] === undefined ? "No posts yet" :
+                posts[0] === undefined ? "No posts yet... Coming Soon!" :
                 posts.map((post) => {
                   return <Link
                     className="link"
@@ -46,7 +45,8 @@ class Blog extends Component {
                     key={post.id}
                   >
                     <li>
-                      {post.title} {new Date(post.createdAt).toDateString()}
+                      {post.title}
+                      <span className="date">{new Date(post.createdAt).toDateString()}</span>
                     </li>
                   </Link>
                 })

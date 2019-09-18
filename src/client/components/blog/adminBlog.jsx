@@ -48,30 +48,29 @@ class AdminBlog extends Component {
     return (
       <>
         <section className="page-heading">
-          <h2>Woo Admin Blog</h2>
-          <Link className="link" to="/new-post">New Post</Link>
+          <h2>Admin Blog</h2>
+          <button><Link className="link" to="/new-post">New Post</Link></button>
           <button onClick={this.signOut.bind(this)}>Sign Out</button>
         </section>
-        <section className="card">
+        <section className="card list-card">
         <ul>
         {
           posts[0] === undefined ? "No posts yet" :
           posts.map(post => {
-            return <li
-              key={post.id}
-            >
-              <Link
+            return <div key={post.id}><Link
                 className="link"
                 to={{
                   pathname: `/blog/${post.slug}`,
                   state: { id: post.id }
                 }}
               >
-                {post.title} {new Date(post.createdAt).toDateString()}
+                <li>
+                  {post.title} <span className="date">{new Date(post.createdAt).toDateString()}</span>
+                </li>
               </Link>
-              <Link className="link" to={`/${post.id}/edit-post`}>Edit</Link>
+              <button><Link className="link" to={`/${post.id}/edit-post`}>Edit</Link></button>
               <button onClick={(e, id) => this.handleDelete(e, post.id)}>Delete</button>
-            </li>
+              </div>
           })
         }
         </ul>

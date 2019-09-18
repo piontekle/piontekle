@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Remarkable } from 'remarkable';
+var md = new Remarkable();
 
 import getURL from '../functions/getURL';
 
@@ -17,9 +19,9 @@ class BlogPost extends Component {
 
     await axios.get(`${url}/api/${this.props.location.state.id}`)
     .then(res => {
-      this.setState({
-        post: res.data.post
-      })
+      res.data.post.content = md.render(res.data.post.content);
+
+      this.setState({ post: res.data.post });
     })
     .catch(err => {
       alert(err);
@@ -33,12 +35,16 @@ class BlogPost extends Component {
     return (
       <>
         <section className="page-heading">
-          <h2>{post.title}</h2>
-          <p>{posted}</p>
-          <p>{post.topics ? post.topics.map(topic => topic) : null}</p>
+          <h2 className="blog-title">{post.title}<small className="date title-date">{posted}</small></h2>
+          <div className="topics">
+          { post.topics ? post.topics.map((topic) => {
+              return <span className="topic">{topic}</span>
+            }) : null
+          }
+          </div>
         </section>
         <section>
-          <p>{post.content}</p>
+          <p dangerouslySetInnerHTML={{__html: post.content}} />
         </section>
       </>
     )

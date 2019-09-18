@@ -11,7 +11,8 @@ describe("routes : posts", () => {
       Post.create({
         title: "Post Stuff",
         content: "This is post content.",
-        topics: ["posts"]
+        topics: ["posts", "tests"],
+        slug: "post-stuff"
       })
       .then((res) => {
         this.post = res;
@@ -28,8 +29,7 @@ describe("routes : posts", () => {
     it("should get all posts", (done) => {
       request.get(`${base}posts`, (err, res, body) => {
         expect(err).toBeNull();
-        expect(body).toContain("Post Stuff");
-        expect(body).toContain("This is post content");
+        expect(body).toContain("retrieved all posts");
         done();
       })
     })
@@ -51,7 +51,9 @@ describe("routes : posts", () => {
         url: `${base}new-post`,
         form: {
           title: "New Post",
-          content: "This is new content"
+          content: "This is new content",
+          topics: "posters",
+          slug: "new-post"
         }
       };
 
@@ -77,7 +79,9 @@ describe("routes : posts", () => {
         url: `${base}${this.post.id}/update`,
         form: {
           title: "This Post Stuff",
-          content: "Yasss queen yasss"
+          content: "Yasss queen yasss",
+          topics: "posts, tests",
+          slug: "this-post-stuff"
         }
       };
 
@@ -88,7 +92,7 @@ describe("routes : posts", () => {
         .then((post) => {
           expect(post.title).toBe("This Post Stuff");
           expect(post.content).toBe("Yasss queen yasss");
-          expect(post.topics).toEqual(["posts"]);
+          expect(post.topics).toEqual(["posts", "tests"]);
           done();
         })
       })

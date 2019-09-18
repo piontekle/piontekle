@@ -5,7 +5,16 @@ describe("Post", () => {
   beforeEach((done) => {
     sequelize.sync({force: true})
     .then(() => {
-      done();
+      Post.create({
+        title: "Post Stuff",
+        content: "testing posts units",
+        topics: ["posts"],
+        slug: "post-stuff"
+      })
+      .then((post) => {
+        this.post = post;
+        done();
+      })
     })
     .catch((err) => {
       console.log(err);
@@ -18,11 +27,12 @@ describe("Post", () => {
       Post.create({
         title: "How to Blog",
         content: "All about blogging",
-        topics: ["blogging"]
+        topics: ["blogging"],
+        slug: "how-to-blog"
       })
       .then((post) => {
         expect(post.title).toBe("How to Blog");
-        expect(post.id).toBe(1);
+        expect(post.id).toBe(2);
         expect(post.content).toBe("All about blogging");
         expect(post.topics).toEqual(["blogging"]);
         done();
@@ -33,12 +43,13 @@ describe("Post", () => {
       });
     });
 
-    it("should not create a Post with null title or content", (done) => {
+    it("should not create a Post with null title content, or slug", (done) => {
       Post.create({
         title: null,
-        content: "123456"
+        content: "123456",
+        slug: "null-days"
       })
-      .then((Post) => {
+      .then(() => {
         //expect failure
       })
       .catch((err) => {
@@ -50,7 +61,7 @@ describe("Post", () => {
 
   describe("#destroy", () => {
     it("should destroy selected Post", (done) => {
-      Post.findByPk(1)
+      Post.findByPk(this.post.id)
       .then((post) => {
         post.destroy()
         .then(() => {
@@ -59,11 +70,11 @@ describe("Post", () => {
             expect(post).toBeNull();
             done();
           })
+          .catch((err) => {
+            console.log(err)
+            done();
+          })
         })
-      })
-      .catch((err) => {
-        console.log(err)
-        done();
       })
     })
   });

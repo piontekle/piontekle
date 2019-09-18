@@ -14,7 +14,7 @@ app.post('/api/admin-in', (req, res, next) => {
       let payload = { id: user.id };
       let token = jwt.sign(payload, process.env.JWT_SECRET);
 
-      res.cookie('token', token, { httpOnly: true }).json({ msg: 'admin logged in'});
+      res.cookie('token', token, { expires: false, maxAge: 2 * 60 * 60 * 1000, httpOnly: true }).json({ msg: 'admin logged in'});
     } else {
       res.status(401).json({ msg: 'Password is incorrect' })
     }
