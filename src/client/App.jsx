@@ -31,12 +31,12 @@ export default class App extends Component {
             <Route path="/projects" component={Projects} />
             <Route path="/skills" component={Skills} />
             <Route path="/contact" component={Contact} />
-            <Route path="/sign-in" component={withAuth(SignIn)} />
+            <Route path="/sign-in" component={SignIn} />
             <Route path="/admin" component={withAuth(Admin)} />
             <Route exact path="/blog" component={BlogIndex} />
             <Route path="/blog/:title" component={BlogPost} />
-            <Route path="/new-post" component={NewBlog} />
-            <Route path="/:id/edit-post" component={EditBlog} />
+            <Route path="/new-post" component={withAuth(NewBlog)} />
+            <Route path="/:id/edit-post" component={withAuth(EditBlog)} />
           </div>
           <Footer />
         </div>

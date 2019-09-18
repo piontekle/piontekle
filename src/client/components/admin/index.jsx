@@ -8,8 +8,7 @@ import BlogIndex from '../blog';
 const Admin = () => (
   <AuthUserContext.Consumer>
   {
-    admin =>
-    admin ? <BlogIndex admin={admin} /> : <div>No dice <Link className="link" to="/sign-in">Sign-in</Link></div>
+    admin => <BlogIndex admin={admin} /> 
   }
   </AuthUserContext.Consumer>
 )

@@ -5,16 +5,16 @@ import axios from 'axios';
 import { AuthUserContext } from './auth';
 import getURL from '../functions/getURL';
 
-const SignIn = () => (
+/* const SignIn = () => (
   <AuthUserContext.Consumer>
   {
     admin =>
     !admin ? <SignInForm /> : <Redirect to="/admin" />
   }
   </AuthUserContext.Consumer>
-)
+) */
 
-class SignInForm extends Component {
+class SignIn extends Component {
   constructor() {
     super();
 

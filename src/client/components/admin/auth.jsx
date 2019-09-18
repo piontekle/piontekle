@@ -49,9 +49,9 @@ function withAuth(AdminComponent) {
         return (<div>Loading Admin...</div>)
       }
 
-      /*if (redirect) {
+      if (redirect) {
         return <Redirect to="/sign-in" />;
-      } */
+      }
 
       return (
         <AuthUserContext.Provider value={admin}>
