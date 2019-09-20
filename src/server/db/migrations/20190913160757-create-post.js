@@ -14,7 +14,7 @@ module.exports = {
       },
       content: {
         allowNull: false,
-        type: Sequelize.STRING(1234)
+        type: Sequelize.TEXT
       },
       topics: {
         type: Sequelize.ARRAY(Sequelize.STRING)

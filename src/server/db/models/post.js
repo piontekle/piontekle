@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     content: {
-      type: DataTypes.STRING(1234),
+      type: DataTypes.TEXT,
       allowNull: false
     },
     topics: DataTypes.ARRAY(DataTypes.STRING),
