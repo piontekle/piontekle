@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Remarkable } from 'remarkable';
 var md = new Remarkable();
+var HTMLParser = require('html-to-react').Parser;
+var parser = new HTMLParser();
 
 import getURL from '../functions/getURL';
 
@@ -31,6 +33,7 @@ class BlogPost extends Component {
   render() {
     const { post } = this.state;
     let posted = new Date(post.createdAt).toDateString();
+    let content = parser.parse(post.content);
 
     return (
       <>
@@ -38,13 +41,13 @@ class BlogPost extends Component {
           <h2 className="blog-title">{post.title}<small className="date title-date">{posted}</small></h2>
           <div className="topics">
           { post.topics ? post.topics.map((topic) => {
-              return <span className="topic">{topic}</span>
+              return <span key={topic} className="topic">{topic}</span>
             }) : null
           }
           </div>
         </section>
-        <section>
-          <p dangerouslySetInnerHTML={{__html: post.content}} />
+        <section className="blog-content">
+          {content}
         </section>
       </>
     )

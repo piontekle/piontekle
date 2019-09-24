@@ -68,3 +68,8 @@ li:hover {
   border-radius: 5px;
   background-color: rgb(211,211,211,.3);
 }
+
+.blog-content {
+  margin-left: 5px;
+  margin-right: 5px;
+}
