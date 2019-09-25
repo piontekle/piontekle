@@ -19,7 +19,7 @@ class BlogPost extends Component {
   async componentDidMount() {
     let url = getURL();
 
-    await axios.get(`${url}/api/${this.props.location.state.id}`)
+    await axios.get(`${url}/api/${this.props.match.params.id}`)
     .then(res => {
       res.data.post.content = md.render(res.data.post.content);
 

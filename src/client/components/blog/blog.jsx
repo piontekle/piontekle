@@ -38,10 +38,7 @@ class Blog extends Component {
                 posts.map((post) => {
                   return <Link
                     className="link"
-                    to={{
-                      pathname: `/blog/${post.slug}`,
-                      state: { id: post.id }
-                    }}
+                    to={`/blog/${post.id}/${post.slug}`}
                     key={post.id}
                   >
                     <li>

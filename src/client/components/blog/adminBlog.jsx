@@ -59,10 +59,7 @@ class AdminBlog extends Component {
           posts.map(post => {
             return <div key={post.id}><Link
                 className="link"
-                to={{
-                  pathname: `/blog/${post.slug}`,
-                  state: { id: post.id }
-                }}
+                to={`/blog/${post.id}/${post.slug}`}
               >
                 <li>
                   {post.title} <span className="date">{new Date(post.createdAt).toDateString()}</span>
