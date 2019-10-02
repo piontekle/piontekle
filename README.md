@@ -1,11 +1,16 @@
 # piontekle-portfolio
 
-Portfolio for showcasing development projects.
+Portfolio for showcasing development projects. Built using React and Node, with Jasmine for tests. Hosted on [Netlify](https://www.netlify.com/) and [Heroku](https://heroku.com).
+
+### Visit the live site:
+### `[piontekle](https://www.piontekle.com)`
 
 ## BuiltWith
 - [React](https://reactjs.org/)
 - [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
+- [Postgres](https://www.postgresql.org/)
+- [Jasmine](https://jasmine.github.io/)
 
 
 ## Author
