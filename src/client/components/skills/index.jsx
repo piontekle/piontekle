@@ -11,7 +11,7 @@ const Skills = () => (
       </div>
       <div className="card-content">
         <p>JavaScript (ES6+, Node.js) | HTML5 | CSS | Ruby | Ladder Logic | Function Block | Structured Text</p>
-        <p>Express.js | React.js | Bootstrap | MDL | jQuery | Angular | Jasmine | Cypress | PostgreSQL | SQL | Firebase Database</p>
+        <p>Express.js | React.js | Redux | Bootstrap | MDL | jQuery | Angular | Jasmine | Cypress | PostgreSQL (Sequelize) | SQL | MongoDB (Mongoose) | Firebase Database</p>
       </div>
     </section>
     <section className="card">
@@ -19,7 +19,7 @@ const Skills = () => (
         <h3>Development Tools</h3>
       </div>
       <div className="card-content">
-        <p>NPM | Atom | Git | Mac OS X (Bash) | Heroku | Google Firebase | Netlify | Figma | Google Drawings | Trello | Windows (+ Microsoft Office Suite) | Rockwell Automation Logix 500 – 5000 and FactoryTalk View ME/SE</p>
+        <p>NPM | Atom | Git | Mac OS X (Bash) | Heroku | Google Firebase | Netlify | Mailchimp | Sendgrid | Nodemailer | Figma | Google Drawings | Trello | Windows (+ Microsoft Office Suite) | Rockwell Automation Logix 500 – 5000 and FactoryTalk View ME/SE</p>
       </div>
     </section>
   </>

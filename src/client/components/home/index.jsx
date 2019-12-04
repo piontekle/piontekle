@@ -6,7 +6,7 @@ const Home = () => (
   <>
     <section className="card home-card">
       <h2 className="summary">Hi, I'm Lauren.</h2>
-      <p className="summary-p">I'm a Brooklyn-based Full Stack Developer with experience in Node, Express, React, Angular, jQuery, and SQL (including PostgreSQL). I love that there's more than one way to do just about anything in development and want to put my eager-to-learn attitude and versatile skills to work in a Full Stack or Software Development position in New York. See the sidebar for ways to get in touch. Let's chat about tech!</p>
+      <p className="summary-p">I'm a Brooklyn-based Full Stack Developer with experience in Node, Express, React, Angular, jQuery, SQL (including PostgreSQL), and MongoDB. I love that there's more than one way to do just about anything in development. I'm currently working as a Software Engineer at <a className="link" href="http://www.predictabill.com">predictaBill</a> in Manhattan where we help expecting parents predict insurance costs of having a child. See the sidebar for ways to get in touch. Let's chat about tech!</p>
     </section>
     <section className="preview-card-section">
       <div className="card preview-card" id="about-preview">
