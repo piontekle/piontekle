@@ -19,7 +19,7 @@ const Skills = () => (
         <h3>Development Tools</h3>
       </div>
       <div className="card-content">
-        <p>NPM | Atom | Git | Mac OS X (Bash) | Heroku | Google Firebase | Netlify | Mailchimp | Sendgrid | Nodemailer | Figma | Google Drawings | Trello | Windows (+ Microsoft Office Suite) | Rockwell Automation Logix 500 – 5000 and FactoryTalk View ME/SE</p>
+        <p>NPM | Atom | Git | Mac OS X (Bash) | Heroku | Google Firebase | Netlify | Stripe | Mailchimp | Sendgrid | Nodemailer | Figma | Google Drawings | Clubhouse.io | Trello | Windows (+ Microsoft Office Suite) | Rockwell Automation Logix 500 – 5000 and FactoryTalk View ME/SE</p>
       </div>
     </section>
   </>
