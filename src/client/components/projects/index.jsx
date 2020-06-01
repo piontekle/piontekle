@@ -9,10 +9,10 @@ const Projects = () => (
     <section className="card project-card">
       <div className= "card project-preview-card-img">
         <div className="overlay-content">
-          <a href="https://piontekle-fitfeel.herokuapp.com" target="_blank">
+          <a href="https://piontekle.com/skills" target="_blank">
             <div className="project-overlay"></div>
             <img className="project-preview-img" src="https://live.staticflickr.com/65535/48684120682_7651c9b363_b.jpg" alt="fitfeel-preview" />
-            <div className="overlay-details"><h3>Go To App</h3></div>
+            <div className="overlay-details"><h3>Currently Under Construction June 2020</h3></div>
           </a>
         </div>
       </div>
@@ -20,9 +20,10 @@ const Projects = () => (
         <h4>FitFeel:</h4>
       </div>
       <div className="project-card-content">
-          <p><a className="link project-link" href="https://github.com/piontekle/fitfeel" target="_blank">Repo</a></p>
+          <p><a className="link project-link" href="https://github.com/piontekle/fitfeel" target="_blank"> Frontend Repo</a> | <a className="link project-link" href="https://github.com/piontekle/fitfeel-api" target="_blank"> Backend Repo</a></p>
+          <p><a className="link project-link" href="https://github.com/piontekle/fitfeelv1" target="_blank"> Fitfeel v1</a></p>
           <p><b>Quick Hits:</b> SPA to mentally check in before and after workouts</p>
-          <p><b>Upcoming features:</b> teammates to applaud check ins, Cypress testing, prompts for checking in, CSS cleanup</p>
+          <p><b>Upcoming features:</b> more security, improved UI, consistent components with new features like teammates to applaud check ins, Cypress testing, prompts for checking in</p>
           <p><b>Tech:</b> React | Node | Express | PostgreSQL | Jasmine | MDL | Heroku</p>
       </div>
     </section>
