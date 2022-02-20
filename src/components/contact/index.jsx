@@ -48,7 +48,13 @@ class Contact extends Component {
 
     return (
       <section className="card form-card">
-        <form name="contact-form" id="contact-form" onSubmit={(e) => this.handleSubmit(e)} method="POST">
+        <form
+          name="contact-form"
+          id="contact-form"
+          onSubmit={(e) => this.handleSubmit(e)}
+          method="POST"
+          netlify-data={true}
+        >
         <input type="hidden" name="form-name" value="contact-form" />
           <h3 className="card-heading">Email Me</h3>
           <label htmlFor="name">Name:</label>
