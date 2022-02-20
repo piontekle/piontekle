@@ -19,10 +19,6 @@ class Contact extends Component {
     }
   }
 
-  componentDidMount() {
-    this.setState({ url: getURL() });
-  }
-
   handleChange = value => e => {
     this.setState({ [value]: e.target.value })
   }
@@ -41,6 +37,8 @@ class Contact extends Component {
       } else if (res.data.msg === 'fail') {
         alert("Message failed to send.");
       }
+    }).catch((err) => {
+      alert(`Message failed to send: ${err?.message}`);
     })
 
   }

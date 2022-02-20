@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './home.css';
 
+import indySelfie from '../../assets/indy_red_selfie.jpeg';
+
 const Home = () => (
   <>
     <section className="card home-card">
@@ -10,7 +12,7 @@ const Home = () => (
     </section>
     <section className="preview-card-section">
       <div className="card preview-card" id="about-preview">
-        <img className="preview-img" src="https://live.staticflickr.com/65535/48688731561_b05c264a21_m.jpg" alt="about-preview-img"/>
+        <img className="preview-img" src={indySelfie} alt="about-preview-img"/>
         <p>More about my professional and personal experiences.</p>
         <Link className="link preview-link" to="/about">Learn More</Link>
       </div>

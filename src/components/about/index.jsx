@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import hallowcats from '../../assets/hallowcats.jpeg';
 import './about.css';
 
 class About extends Component {
@@ -18,8 +19,12 @@ class About extends Component {
           <h2>About Me</h2>
         </section>
         <section className="card about-card">
-          <img className="about-pic" src="https://live.staticflickr.com/65535/48688483166_21fe268bcf_m.jpg" alt="MIZ_me" />
-          <p>I'm a full stack developer based in Boston, MA. I was born and raised in St. Louis, MO where I enjoyed the no. 1 free zoo in the country and played under the Gateway Arch. Thanks to 6 years of Zoo and Science Center camps mixed with a DIY-oriented family, I grew up curious and always looking to experiment with something. From there I attend University of Missouri - Columbia (aka: Mizzou), where I started as a Communications and Political Science dual major. Long story short, I graduated in spring 2015 with my BS in Mechanical Engineering and a minor in Spanish.</p>
+          <img className="about-pic" src={hallowcats} alt="cats_in_costumes_with_us_in_organge" />
+          <p>
+            I'm a full stack developer based in Boston, MA. I was born and raised in St. Louis, MO where I enjoyed the no. 1 free zoo in the country and played under the Gateway Arch. Thanks to 6 years of Zoo and Science Center camps mixed with a DIY-oriented family, I grew up curious and always looking to experiment with something. From there I attend University of Missouri - Columbia (aka: Mizzou), where I started as a Communications and Political Science dual major. Long story short, I graduated in spring 2015 with my BS in Mechanical Engineering and a minor in Spanish.
+
+            Since then I've moved around until finally landing in Boston, where I live with my fiancé and two cats, Hobbes and Opus.
+          </p>
           <button
             className="about-button"
             onClick={() => this.showClick('professional')}

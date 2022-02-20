@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './nav.css';
 
+import portrait from '../../assets/portrait.jpeg';
+
 const Header = () => (
   <header>
     <Link to="/" title="Home">
       <section id="pro-pic-rect">
-        <img src="https://lh3.googleusercontent.com/EZiKdK-w6XtLrvnL6DNRFztTmxVgoNroKbdHFYIMADOF3_buDt4SLNv7lBUGORL0WuPdUcN8UzcCUdGJMPlm_XjS3qLUcNUR5yijCDlJ0HlCbKkIDVrnyn7ywUNfMHtTT_addtdbSw=w2400" id="pro-pic" alt="LP-pic"/>
+        <img src={portrait} id="pro-pic" alt="LP-pic"/>
       </section>
     </Link>
     <nav id="header-nav">
@@ -31,8 +33,6 @@ const Sidebar = () => (
 const Footer = () => (
   <footer>
     <nav id="footer-nav">
-      <a className="link footer-link" href="https://github.com/crsandeep/simple-react-full-stack" target="_blank">Boilerplate</a>
-      <Link className="link footer-link" to="/sign-in">Admin</Link>
     </nav>
   </footer>
 )

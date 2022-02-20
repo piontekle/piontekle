@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './blog.css';
 
-import getURL from '../../utilities/getURL';
-
-import AdminBlog from './adminBlog';
 import Blog from './blog';
 
 class BlogIndex extends Component {
@@ -13,8 +9,6 @@ class BlogIndex extends Component {
 
     this.state = {
       loading: true,
-      url: null,
-      admin: false,
       posts: []
     }
   }
@@ -40,20 +34,13 @@ components */
   }
 
   render() {
-    const { loading, url, posts } = this.state;
+    const { loading, posts } = this.state;
 
     return (
-      <>
-        { loading ?
-          <div>
-            LOADING... It could take up to 30s on initial load, thank you for your patience!
-          </div> : (
-          <Blog
-            url={url}
-            posts={posts}
-          />
-        )}
-      </>
+      <Blog
+        loading={loading}
+        posts={posts}
+      />
     )
   }
 }

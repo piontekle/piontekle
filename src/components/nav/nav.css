@@ -13,7 +13,7 @@ header {
 #pro-pic-rect {
   position: absolute;
   width: 165px;
-  height: 215px;
+  height: 200px;
   left: 15px;
   top: 8px;
 
@@ -26,7 +26,7 @@ header {
 
 #pro-pic {
   width: 150px;
-  height: 200px;
+  height: 175px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
