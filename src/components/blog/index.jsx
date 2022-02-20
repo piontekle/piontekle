@@ -22,40 +22,37 @@ class BlogIndex extends Component {
 /* GET posts, set url, admin, and post attributes for passing to respective
 components */
   async componentDidMount() {
-    let url = getURL();
+    // let url = getURL();
 
-    await axios.get(`${url}/api/posts`)
-    .then(res => {
-      this.setState({
-        loading: false,
-        url: url,
-        admin: this.props.admin || false,
-        posts: res.data.posts
-      });
-    })
-    .catch(err => {
-      alert(err);
-    })
+    // await axios.get(`${url}/api/posts`)
+    // .then(res => {
+    //   this.setState({
+    //     loading: false,
+    //     url: url,
+    //     admin: this.props.admin || false,
+    //     posts: res.data.posts
+    //   });
+    // })
+    // .catch(err => {
+    //   alert(err);
+    // })
+    this.setState({ loading: false, posts: [] });
   }
 
   render() {
-    const { loading, url, admin, posts } = this.state;
+    const { loading, url, posts } = this.state;
 
     return (
       <>
         { loading ?
           <div>
             LOADING... It could take up to 30s on initial load, thank you for your patience!
-          </div> : (admin ?
-          <AdminBlog
-            url={url}
-            posts={posts}
-          /> :
+          </div> : (
           <Blog
             url={url}
             posts={posts}
-          />)
-        }
+          />
+        )}
       </>
     )
   }
