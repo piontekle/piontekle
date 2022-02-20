@@ -9,7 +9,6 @@ class Contact extends Component {
       email: "",
       subject: "Saw your portfolio - let's get in touch!",
       message: "",
-      success: false,
     }
   }
 
