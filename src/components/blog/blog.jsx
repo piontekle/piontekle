@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
 
 class Blog extends Component {
   constructor(props) {
@@ -36,8 +34,6 @@ class Blog extends Component {
   // }
 
   render() {
-    const { loading, posts } = this.state;
-
     return (
           <>
             <section className="page-heading">

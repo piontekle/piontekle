@@ -1,7 +1,8 @@
 {
-  "name": "piontekle",
-  "version": "0.1.0",
-  "private": true,
+  "name": "piontekle-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio using React.",
+  "author": "Lauren Piontek",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^11.2.7",

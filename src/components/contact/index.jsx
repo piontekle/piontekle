@@ -28,7 +28,7 @@ class Contact extends Component {
 
     axios.post("/", {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      data: { "form-name": "contact", ...this.state },
+      data: encode({ "form-name": "contact", ...this.state }),
     })
     .then((res) => {
       if(res.data.msg === "success") {
