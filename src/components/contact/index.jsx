@@ -1,11 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
-const encode = (data) => {
-  return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-}
 
 class Contact extends Component {
   constructor() {
@@ -15,7 +8,7 @@ class Contact extends Component {
       name: "",
       email: "",
       subject: "Saw your portfolio - let's get in touch!",
-      message: ""
+      message: "",
     }
   }
 
@@ -23,25 +16,11 @@ class Contact extends Component {
     this.setState({ [value]: e.target.value })
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-
-    axios.post("/", {
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      data: encode({ "form-name": "contact", ...this.state }),
-    })
-    .then((res) => {
-      if(res.data.msg === "success") {
-        alert("Message sent! I'll get back to you soon.");
-        window.location = "/";
-      } else if (res.data.msg === 'fail') {
-        alert("Message failed to send.");
-      }
-    }).catch((err) => {
-      alert(`Message failed to send: ${err?.message}`);
-    })
-
+  messageFeedback = () => {
+    alert("Message sent. I'll be in touch soon!")
+    window.location("/")
   }
+
 
   render() {
     const { name, email, subject, message } = this.state;
@@ -51,7 +30,7 @@ class Contact extends Component {
         <form
           name="contact-form"
           id="contact-form"
-          onSubmit={(e) => this.handleSubmit(e)}
+          action={this.messageFeedback}
           method="POST"
           netlify-data={true}
         >
