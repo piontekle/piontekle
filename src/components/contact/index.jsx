@@ -48,8 +48,8 @@ class Contact extends Component {
 
     return (
       <section className="card form-card">
-        <form id="contact-form" onSubmit={(e) => this.handleSubmit(e)} method="POST" name="contact">
-        <input type="hidden" name="form-name" value="contact" />
+        <form name="contact-form" id="contact-form" onSubmit={(e) => this.handleSubmit(e)} method="POST">
+        <input type="hidden" name="form-name" value="contact-form" />
           <h3 className="card-heading">Email Me</h3>
           <label htmlFor="name">Name:</label>
           <input
