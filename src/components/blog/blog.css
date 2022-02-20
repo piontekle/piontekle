@@ -1,0 +1,80 @@
+/*card formatting */
+.list-card {
+  height: 500px;
+}
+
+/* list formatting */
+ul {
+  margin: 0;
+  padding: 5px;
+  list-style-type: none;
+}
+
+li {
+  height: 45px;
+  padding-top: 8px;
+  padding-left: 15px;
+
+  font-size: 2em;
+  color: black;
+
+  border-bottom: 1px solid #44DFD6;
+}
+
+li:hover {
+  background-color: #DCDCDC;
+  border-radius: 5px;
+}
+
+.date {
+  height: 2em;
+	line-height: 3em;
+  float: right;
+  padding-right: 15px;
+
+  font-style: italic;
+  font-size: 18px;
+}
+
+/* form formatting */
+.blog-form-card {
+  height: auto;
+}
+
+.blog-label {
+  display: block;
+}
+
+/* blog post formatting */
+.blog-title {
+  display: inline;
+}
+.title-date {
+  display: inline;
+  height: 2em;
+	line-height: 2em;
+}
+
+.topics {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.topic {
+  padding: 2px;
+  margin-left: 2px;
+
+  border: 1px solid #44DFD6;
+  border-radius: 5px;
+  background-color: rgb(211,211,211,.3);
+}
+
+.blog-content {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.blog-announcement {
+  font-style: italic;
+  font-size: 18px;
+}
