@@ -9,6 +9,13 @@ class Contact extends Component {
       email: "",
       subject: "Saw your portfolio - let's get in touch!",
       message: "",
+      success: false,
+    }
+  }
+
+  componentDidMount = () => {
+    if ( window.location.search.includes('success=true') ) {
+      this.setState({ success: true })
     }
   }
 
@@ -16,21 +23,17 @@ class Contact extends Component {
     this.setState({ [value]: e.target.value })
   }
 
-  messageFeedback = () => {
-    alert("Message sent. I'll be in touch soon!")
-    window.location("/")
-  }
-
 
   render() {
-    const { name, email, subject, message } = this.state;
+    const { name, email, subject, message, success } = this.state;
 
     return (
       <section className="card form-card">
+        {success && <p>Message successfully sent. I'll get in touch soon!</p>}
         <form
           name="contact-form"
           id="contact-form"
-          action={this.messageFeedback}
+          action="/contact/?success=true"
           method="POST"
           netlify-data={true}
         >
