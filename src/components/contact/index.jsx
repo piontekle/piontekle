@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReCaptchaV2 from 'react-google-recaptcha'
 
 class Contact extends Component {
   constructor() {
@@ -10,11 +11,12 @@ class Contact extends Component {
       subject: "Saw your portfolio - let's get in touch!",
       message: "",
       success: false,
+      token: null,
     }
   }
 
   componentDidMount = () => {
-    if ( window.location.search.includes('success=true') ) {
+    if (window.location.search.includes('success=true')) {
       this.setState({ success: true })
     }
   }
@@ -23,9 +25,17 @@ class Contact extends Component {
     this.setState({ [value]: e.target.value })
   }
 
+  handleToken = (token) => {
+    this.setState({ token })
+  }
+
+  handleExpire = () => {
+    this.setState({ token: null })
+  }
+
 
   render() {
-    const { name, email, subject, message, success } = this.state;
+    const { name, email, subject, message, success, token } = this.state;
 
     return (
       <section className="card form-card">
@@ -71,7 +81,12 @@ class Contact extends Component {
             onChange={this.handleChange("message")}
           >
           </textarea>
-          <button type="submit">Send Message</button>
+          <ReCaptchaV2
+            sitekey={process.env.REACT_APP_SITE_KEY}
+            onChange={this.handleToken}
+            onExpired={this.handleExpire}
+          />
+          <button type="submit" disabled={token == null}>Send Message</button>
         </form>
       </section>
     )
